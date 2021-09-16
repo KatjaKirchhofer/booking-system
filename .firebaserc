@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "yogabooking": {
+      "hosting": {
+        "booking-system": [
+          "yogabooking"
+        ]
+      }
+    }
+  }
+}

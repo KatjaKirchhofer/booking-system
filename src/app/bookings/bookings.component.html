@@ -1,0 +1,18 @@
+<div class="h-50 p-4 text-white bg-dark rounded-3">
+  <h2>Your Bookings</h2>
+</div>
+
+<div class="list-group" *ngFor="let booking of bookings | async">
+
+       
+        <a href="#" class="list-group-item list-group-item-action mt-3">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Name: {{ booking.name }}</h5>
+            <!-- <small class="text-muted"> {{ booking.id }} </small> -->
+          </div>
+          <p class="mb-1">Yoga Class: {{ booking.class }}</p>
+          <small class="text-muted">Experience: {{ booking.experience }}</small><br>
+          <small class="text-muted">Date: {{ booking.date | date: 'dd/MM/yy'}}</small>
+        </a>
+        
+    </div>
