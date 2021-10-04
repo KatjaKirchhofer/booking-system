@@ -12,6 +12,7 @@ export class NewBookingComponent implements OnInit {
   class = '';
   experience = '';
   date: any;
+  showBookings = false;
 
   booking = {
     id: '',
@@ -37,7 +38,9 @@ export class NewBookingComponent implements OnInit {
     console.log(this.booking);
     this.firestore
     .collection('bookings')
-    .add(this.booking)
+    .add(this.booking);
+    this.showBookings = true;
+
     
   }
    

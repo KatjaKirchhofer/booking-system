@@ -1,63 +1,70 @@
+<div class="container" *ngIf="!showBookings">
+    <div class="card">
+        <div class="card-header bg-dark text-white">
+            <h2>Book your Yoga Class</h2>
 
-<div class="card">
-    <div class="card-header bg-dark text-white">
-        <h2>Book your Yoga Class</h2>
+        </div>
+
+
+        <div class="card-body">
+            <div class="row mb-3">
+                <!-- <div class="col">
+                    <p>Id: {{ id }} </p>
+                </div> -->
+
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label" for="nameInput">Name:</label>
+                    <input name="nameInput" [(ngModel)]="booking.name" class="form-control" placeholder="name"
+                        type="text">
+                </div>
+
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label" for="classInput">Choose your class:</label>
+                    <select name="classInput" [(ngModel)]="booking.class" class="form-select"
+                        aria-label="Default select example">
+                        <option selected>Choose your class</option>
+                        <option value="basic">Basic</option>
+                        <option value="technik">Technik</option>
+                        <option value="mysore">Mysore</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label" for="experienceInput">How experieced are you?</label>
+                    <select name="experienceInput" [(ngModel)]="booking.experience" class="form-select"
+                        aria-label="Default select example">
+                        <option selected>Choose your Yoga Experience</option>
+                        <option value="new">new</option>
+                        <option value="intermediate">intermediate</option>
+                        <option value="advanced">advanced</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label" for="dateInput">Date:</label>
+                    <input name="dateInput" [(ngModel)]="booking.date" class="form-control" placeholder="Class Date"
+                        type="date">
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="card-footer bg-dark">
+            <button (click)="saveBooking()" class="btn btn-primary">book class!</button>
+        </div>
 
     </div>
-
-
-    <div class="card-body">
-        <div class="row mb-3">
-            <div class="col">
-                <p>Id: {{ id }} </p>
-            </div>
-
-        </div>
-        <div class="row mb-3">
-            <div class="col">
-                <label class="form-label" for="nameInput">Name:</label>
-                <input name="nameInput" [(ngModel)]="booking.name" class="form-control" placeholder="name" type="text" >
-            </div>
-
-        </div>
-
-        <div class="row mb-3">
-            <div class="col">
-                <label class="form-label" for="classInput">Choose your class:</label>
-                <select name="classInput" [(ngModel)]="booking.class" class="form-select" aria-label="Default select example">
-                    <option selected>Choose your class</option>
-                    <option value="basic">Basic</option>
-                    <option value="technik">Technik</option>
-                    <option value="mysore">Mysore</option>
-                  </select>
-            </div>
-
-        </div>
-
-        <div class="row mb-3">
-            <div class="col">
-                <label class="form-label" for="experienceInput">How experieced are you?</label>
-                <select name="experienceInput" [(ngModel)]="booking.experience" class="form-select" aria-label="Default select example">
-                    <option selected>Choose your Yoga Experience</option>
-                    <option value="new">new</option>
-                    <option value="intermediate">intermediate</option>
-                    <option value="advanced">advanced</option>
-                  </select>
-            </div>
-        </div>
-
-        <div class="row mb-3">
-            <div class="col">
-                <label class="form-label" for="dateInput">Date:</label>
-                <input name="dateInput" [(ngModel)]="booking.date" class="form-control" placeholder="Class Date" type="date">
-            </div>
-        </div>
-
-    </div>
-
-
-    <div class="card-footer bg-dark">
-        <button (click)="saveBooking()" class="btn btn-primary">book class!</button>
-    </div>
-
 </div>
+
+<app-bookings *ngIf="showBookings"></app-bookings>

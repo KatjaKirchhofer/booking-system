@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class BookingsComponent implements OnInit {
 
+
   constructor(public bookingsService: BookingService, private firestore: AngularFirestore) { }
 
   bookings: Observable<any>;
@@ -20,5 +21,10 @@ export class BookingsComponent implements OnInit {
     .collection('bookings')
     .valueChanges()
   }
+  deleteBooking() {
+    
+   
+  }
+  
 
 }
