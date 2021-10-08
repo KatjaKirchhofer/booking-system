@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-booking',
@@ -21,7 +22,9 @@ export class NewBookingComponent implements OnInit {
     experience: '',
     date: Date
   };
-  constructor(private firestore: AngularFirestore) { }
+
+  allBookingIds: [];
+  constructor(private firestore: AngularFirestore, private router: Router) { }
 
   ngOnInit(): void {
     this.createNewId();
@@ -29,7 +32,17 @@ export class NewBookingComponent implements OnInit {
 
   }
   createNewId() {
-    this.id = this.id + Math.floor(Math.random()*10)
+    this.firestore
+    .collection('bookings')
+    .valueChanges({ idField: 'customIdName'})
+    .subscribe((changes: any) =>{
+      this.allBookingIds = changes;
+      console.log('allIds:', this.allBookingIds)
+      // console.log('customNameId:', changes[1]['customIdName'])
+
+    })
+
+    // this.id = this.id + Math.floor(Math.random()*10)
   }
 
   saveBooking() {
@@ -38,8 +51,16 @@ export class NewBookingComponent implements OnInit {
     console.log(this.booking);
     this.firestore
     .collection('bookings')
-    .add(this.booking);
-    this.showBookings = true;
+    .add(this.booking)
+    .then(()=>{
+      
+      console.log(this.booking);
+      this.router.navigateByUrl('/bookings');
+    })
+    .catch(error =>{
+      console.log(error);
+    });
+   
 
     
   }
